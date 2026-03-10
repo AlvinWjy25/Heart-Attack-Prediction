@@ -83,6 +83,9 @@ def main():
         df = pd.DataFrame(input_data)
         prediction = pipeline.predict(df)[0]
         proba = pipeline.predict_proba(df)[0]
+
+        low_risk_pct  = proba[0] * 100
+        high_risk_pct = proba[1] * 100
         
         st.markdown("---")
         if prediction == 1:
@@ -209,6 +212,7 @@ def run_training():
 
 if __name__ == '__main__':
     main()
+
 
 
 
