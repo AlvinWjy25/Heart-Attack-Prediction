@@ -82,6 +82,7 @@ def main():
         
         df = pd.DataFrame(input_data)
         prediction = pipeline.predict(df)[0]
+        proba = pipeline.predict_proba(df)[0]
         
         st.markdown("---")
         if prediction == 1:
@@ -208,6 +209,7 @@ def run_training():
 
 if __name__ == '__main__':
     main()
+
 
 
 
