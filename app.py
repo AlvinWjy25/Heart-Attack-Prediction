@@ -91,14 +91,15 @@ def main():
             st.success('✅ **Prediction: Low Risk of Heart Attack**')
             st.write("Based on the provided metrics, the model indicates a lower likelihood of cardiovascular presence.")
 
+        # Confidence section
         st.markdown("#### Model Confidence")
-            col_low, col_high = st.columns(2)
-            with col_low:
-                st.metric("✅ Low Risk", f"{low_risk_pct:.1f}%")
-                st.progress(proba[0])
-            with col_high:
-                st.metric("⚠️ High Risk", f"{high_risk_pct:.1f}%")
-                st.progress(proba[1])
+        col_low, col_high = st.columns(2)
+        with col_low:
+            st.metric("✅ Low Risk", f"{low_risk_pct:.1f}%")
+            st.progress(proba[0])
+        with col_high:
+            st.metric("⚠️ High Risk", f"{high_risk_pct:.1f}%")
+            st.progress(proba[1])
 
 def run_training():
     with mlflow.start_run(run_name="xgb_heart_fixed_pipeline") as run:
@@ -207,5 +208,6 @@ def run_training():
 
 if __name__ == '__main__':
     main()
+
 
 
